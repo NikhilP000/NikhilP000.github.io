@@ -1,786 +1,821 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeffrey Remedies | Committed to Healthcare Excellence</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        medicalBlue: '#0284c7',
-                        navyDeep: '#0f172a',
-                        emeraldAccent: '#10b981',
-                        slateLight: '#f8fafc'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif']
-                    }
-                }
+    <title>Jeffrey Remedies | Quality Pharmaceutical & Healthcare Products</title>
+    <style>
+        :root {
+            --primary-blue: #0284c7;
+            --secondary-blue: #0369a1;
+            --accent-green: #10b981;
+            --dark-navy: #0f172a;
+            --slate-gray: #475569;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-navy);
+            line-height: 1.6;
+        }
+
+        /* Top Notification Bar */
+        .top-bar {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-info span {
+            margin-right: 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-navy);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-blue);
+            color: var(--white) !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s !important;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--secondary-blue) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(2, 132, 199, 0.85)), url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #e2e8f0;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-green);
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 12px 26px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--dark-navy);
+        }
+
+        /* Section Global Setup */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            color: var(--dark-navy);
+            margin-top: 5px;
+        }
+
+        /* About & Profile Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .about-card h3 {
+            font-size: 1.6rem;
+            color: var(--dark-navy);
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: var(--slate-gray);
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .details-box {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--slate-gray);
+        }
+
+        .detail-value {
+            font-weight: 700;
+            color: var(--dark-navy);
+            text-align: right;
+        }
+
+        /* Products & Filter Tabs */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--white);
+            border: 1px solid #cbd5e1;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--slate-gray);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .product-img-wrapper {
+            height: 260px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-tag {
+            background-color: #e0f2fe;
+            color: var(--primary-blue);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            width: fit-content;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            color: var(--dark-navy);
+            margin-bottom: 6px;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--slate-gray);
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .product-meta {
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--slate-gray);
+        }
+
+        /* Quality Standards Banner */
+        .quality-banner {
+            background: linear-gradient(135deg, var(--dark-navy), #1e293b);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 50px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .quality-item h4 {
+            color: var(--accent-green);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .quality-item p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Forms Section */
+        .forms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .form-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+
+        .form-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark-navy);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--slate-gray);
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--primary-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            padding: 70px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            margin-top: 8px;
+        }
+
+        .footer-col p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-col p strong {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .about-grid, .forms-grid {
+                grid-template-columns: 1fr;
             }
         }
-    </script>
-    <style>
-        /* Custom smooth transitions and animations */
-        .glass-nav {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0284c7 100%);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(2, 132, 199, 0.1), 0 10px 10px -5px rgba(2, 132, 199, 0.04);
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .top-bar-container {
+                justify-content: center;
+                text-align: center;
+            }
         }
     </style>
 </head>
-<body class="bg-slateLight text-slate-800 font-sans antialiased">
+<body>
 
-    <!-- Header / Navigation -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-800 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <a href="#home" class="flex items-center space-x-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-medicalBlue to-emeraldAccent flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-                        <i class="fa-solid fa-staff-snake text-xl"></i>
-                    </div>
-                    <div>
-                        <span class="text-xl font-bold tracking-tight text-white block">JEFFREY REMEDIES</span>
-                        <span class="text-xs text-medicalBlue font-medium tracking-widest uppercase">Healthcare & Innovation</span>
-                    </div>
-                </a>
-
-                <!-- Desktop Nav Links -->
-                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
-                    <a href="#home" class="text-white hover:text-medicalBlue transition-colors">Home</a>
-                    <a href="#about" class="text-slate-300 hover:text-medicalBlue transition-colors">About Us</a>
-                    <a href="#products" class="text-slate-300 hover:text-medicalBlue transition-colors">Products</a>
-                    <a href="#quality" class="text-slate-300 hover:text-medicalBlue transition-colors">Quality</a>
-                    <a href="#franchise" class="text-slate-300 hover:text-medicalBlue transition-colors">PCD Franchise</a>
-                    <a href="#contact" class="text-slate-300 hover:text-medicalBlue transition-colors">Contact</a>
-                </nav>
-
-                <!-- Partner CTA Button -->
-                <div class="hidden md:block">
-                    <a href="#franchise" class="bg-medicalBlue hover:bg-sky-600 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center space-x-2 text-sm">
-                        <span>Partner With Us</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
+    <!-- Top Contact Strip -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-info">
+                <span>📞 +91 7084917850 / 9336841671</span>
+                <span>✉️ jeffrey.remedies.mkd@gmail.com</span>
+            </div>
+            <div>
+                <span>📍 Prayagraj | New Delhi</span>
             </div>
         </div>
+    </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-navyDeep border-t border-slate-800 px-4 pt-4 pb-6 space-y-3">
-            <a href="#home" class="block text-white font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Home</a>
-            <a href="#about" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">About Us</a>
-            <a href="#products" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Products</a>
-            <a href="#quality" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Quality Assurance</a>
-            <a href="#franchise" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">PCD Franchise</a>
-            <a href="#contact" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Contact Us</a>
-            <div class="pt-2">
-                <a href="#franchise" class="w-full bg-medicalBlue hover:bg-sky-600 text-white text-center font-semibold py-2.5 rounded-xl block shadow">Partner With Us</a>
-            </div>
+    <!-- Main Navigation Bar -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <img src="1000347659.jpg" alt="Jeffrey Remedies Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#quality">Quality</a></li>
+                <li><a href="#franchise">PCD Franchise</a></li>
+                <li><a href="#contact" class="cta-btn">Contact Us</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 hero-gradient text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#0284c7_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center space-x-2 bg-medicalBlue/20 border border-medicalBlue/40 px-4 py-1.5 rounded-full text-sky-300 text-sm font-semibold tracking-wide">
-                        <i class="fa-solid fa-shield-halved text-emeraldAccent"></i>
-                        <span>ISO 9001:2015 & WHO-GMP Certified Company</span>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                        Committed to <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">Healthcare Excellence</span> & Innovation
-                    </h1>
-                    <p class="text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0">
-                        Jeffrey Remedies delivers world-class pharmaceutical formulations, life-saving medicines, and superior healthcare solutions designed to improve patient lives globally.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="#products" class="w-full sm:w-auto bg-medicalBlue hover:bg-sky-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl transition-all flex items-center justify-center space-x-3 text-base">
-                            <span>Explore Products</span>
-                            <i class="fa-solid fa-capsules"></i>
-                        </a>
-                        <a href="#franchise" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-bold px-8 py-4 rounded-xl transition-all flex items-center justify-center space-x-3 text-base">
-                            <span>Business Inquiry</span>
-                            <i class="fa-solid fa-handshake text-emeraldAccent"></i>
-                        </a>
-                    </div>
-
-                    <!-- Key Trust Indicators -->
-                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/80 text-center lg:text-left">
-                        <div>
-                            <p class="text-3xl font-extrabold text-sky-400">150+</p>
-                            <p class="text-xs text-slate-400 font-medium uppercase mt-1">Products Portfolio</p>
-                        </div>
-                        <div>
-                            <p class="text-3xl font-extrabold text-emerald-400">25+</p>
-                            <p class="text-xs text-slate-400 font-medium uppercase mt-1">States Covered</p>
-                        </div>
-                        <div>
-                            <p class="text-3xl font-extrabold text-sky-400">100%</p>
-                            <p class="text-xs text-slate-400 font-medium uppercase mt-1">Quality Assured</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hero Visual Graphic -->
-                <div class="lg:col-span-5 flex justify-center">
-                    <div class="relative w-full max-w-md">
-                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-medicalBlue to-emeraldAccent opacity-30 blur-xl"></div>
-                        <div class="relative bg-navyDeep/90 border border-slate-700 rounded-3xl p-8 shadow-2xl backdrop-blur-md">
-                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 rounded-2xl bg-medicalBlue/20 flex items-center justify-center text-medicalBlue">
-                                        <i class="fa-solid fa-microscope text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-white">Advanced Research</h4>
-                                        <p class="text-xs text-slate-400">Rigorous clinical testing</p>
-                                    </div>
-                                </div>
-                                <span class="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-semibold">Active Lab</span>
-                            </div>
-                            <div class="space-y-4 pt-6">
-                                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                                    <div class="flex justify-between text-sm mb-1">
-                                        <span class="text-slate-300 font-medium">Formulation Safety</span>
-                                        <span class="text-emerald-400 font-bold">99.9%</span>
-                                    </div>
-                                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                                        <div class="bg-emerald-400 h-full rounded-full w-[99.9%]"></div>
-                                    </div>
-                                </div>
-                                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                                    <div class="flex justify-between text-sm mb-1">
-                                        <span class="text-slate-300 font-medium">WHO-GMP Standard Compliance</span>
-                                        <span class="text-sky-400 font-bold">Verified</span>
-                                    </div>
-                                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                                        <div class="bg-medicalBlue h-full rounded-full w-full"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                                <span><i class="fa-solid fa-location-dot text-medicalBlue mr-1"></i> Gorakhpur, UP, India</span>
-                                <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i> Verified Partner</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Est. 2021 • ISO Certified Standards</span>
+            <h1>Trusted Pharmaceutical & Healthcare Solutions</h1>
+            <p>Jeffrey Remedies is a premier manufacturer, supplier, and trading company dedicated to high-grade formulations, skincare, and personal healthcare products.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn-primary">Explore Products</a>
+                <a href="#franchise" class="btn-secondary">Franchise Opportunities</a>
             </div>
         </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="about" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="inline-flex items-center space-x-2 bg-sky-50 text-medicalBlue px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide">
-                        <i class="fa-solid fa-building-shield"></i>
-                        <span>About Jeffrey Remedies</span>
-                    </div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
-                        Dedicated to Ethical Pharmaceutical Marketing & Superior Formulations
-                    </h2>
-                    <p class="text-slate-600 leading-relaxed text-base">
-                        Founded with a vision to bridge the gap between advanced medical science and patient accessibility, **Jeffrey Remedies** stands as a trusted name in the pharmaceutical sector. Headquartered in Gorakhpur, Uttar Pradesh, we specialize in high-grade pharmaceutical formulations ranging from tablets and capsules to pediatric syrups and injectables.
-                    </p>
-                    <p class="text-slate-600 leading-relaxed text-base">
-                        Our products are manufactured in state-of-the-art third-party manufacturing facilities that strictly adhere to **WHO-GMP** and **ISO certification** standards. We empower medical professionals with safe, reliable, and affordable therapeutics.
-                    </p>
-                    
-                    <!-- Feature Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-4">
-                            <div class="w-10 h-10 rounded-xl bg-medicalBlue/10 text-medicalBlue flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-bullseye text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-navyDeep text-sm">Mission-Driven</h4>
-                                <p class="text-xs text-slate-500 mt-1">Affordable and accessible healthcare for all segments of society.</p>
-                            </div>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-4">
-                            <div class="w-10 h-10 rounded-xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-award text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-navyDeep text-sm">Uncompromising Quality</h4>
-                                <p class="text-xs text-slate-500 mt-1">Rigorous testing protocols at every phase of manufacturing.</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- About Us & Company Profile -->
+    <section id="about" class="section">
+        <div class="section-header">
+            <span class="section-subtitle">Who We Are</span>
+            <h2 class="section-title">About Jeffrey Remedies</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Committed to Healthcare Excellence</h3>
+                <p>Jeffrey Remedies, established in 2021, is a trusted manufacturer and supplier based in Prayagraj, Uttar Pradesh. We specialize in producing high-quality pharmaceutical products to support healthcare needs.</p>
+                <p>Through strategic third-party manufacturing alliances and strict quality compliance, we deliver reliable formulations across dermatology, skincare, and therapeutic segments to doctors, hospitals, and distributors nationwide.</p>
+            </div>
+            <div class="details-box">
+                <div class="detail-row">
+                    <span class="detail-label">Nature of Business</span>
+                    <span class="detail-value">Manufacturer, Supplier & Trading</span>
                 </div>
-
-                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
-                    <div class="space-y-4">
-                        <div class="bg-gradient-to-br from-navyDeep to-slate-800 p-8 rounded-3xl text-white shadow-xl">
-                            <i class="fa-solid fa-handshake-angle text-4xl text-medicalBlue mb-4"></i>
-                            <h3 class="text-xl font-bold mb-2">Ethical Practices</h3>
-                            <p class="text-sm text-slate-300">Transparent business dealings with stockists, doctors, and franchise partners.</p>
-                        </div>
-                        <div class="bg-sky-50 border border-sky-100 p-8 rounded-3xl text-navyDeep">
-                            <i class="fa-solid fa-pills text-4xl text-medicalBlue mb-4"></i>
-                            <h3 class="text-xl font-bold mb-2">Diverse Portfolio</h3>
-                            <p class="text-sm text-slate-600">Wide spectrum of specialty therapeutics across multiple medical domains.</p>
-                        </div>
-                    </div>
-                    <div class="space-y-4 pt-8">
-                        <div class="bg-emerald-50 border border-emerald-100 p-8 rounded-3xl text-navyDeep">
-                            <i class="fa-solid fa-shield-virus text-4xl text-emeraldAccent mb-4"></i>
-                            <h3 class="text-xl font-bold mb-2">WHO-GMP Standards</h3>
-                            <p class="text-sm text-slate-600">Manufactured in ultra-clean, audited production plants.</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-medicalBlue to-sky-600 p-8 rounded-3xl text-white shadow-xl">
-                            <i class="fa-solid fa-truck-fast text-4xl text-emerald-300 mb-4"></i>
-                            <h3 class="text-xl font-bold mb-2">Pan-India Reach</h3>
-                            <p class="text-sm text-sky-100">Robust distribution network ensuring timely delivery across states.</p>
-                        </div>
-                    </div>
+                <div class="detail-row">
+                    <span class="detail-label">Year of Establishment</span>
+                    <span class="detail-value">2021</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Proprietor</span>
+                    <span class="detail-value">Mr. Khusroo Jafri</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">GST Number</span>
+                    <span class="detail-value">09AYJPJ5724B1ZJ</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Headquarters</span>
+                    <span class="detail-value">Prayagraj, Uttar Pradesh</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Product Portfolio Section -->
-    <section id="products" class="py-24 bg-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="inline-flex items-center space-x-2 bg-sky-100 text-medicalBlue px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4">
-                    <i class="fa-solid fa-capsules"></i>
-                    <span>Our Formulations</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
-                    Comprehensive Product Portfolio
-                </h2>
-                <p class="text-slate-600 mt-4 text-base">
-                    Browse our premium range of pharmaceutical formulations. All products are packaged under advanced Alu-Alu and Blister packing to maintain potency and shelf-life.
-                </p>
+    <section id="products" class="section">
+        <div class="section-header">
+            <span class="section-subtitle">Product Portfolio</span>
+            <h2 class="section-title">Featured Formulations</h2>
+        </div>
 
-                <!-- Filter Buttons -->
-                <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
-                    <button onclick="filterProducts('all')" class="filter-btn active-filter px-5 py-2 rounded-xl text-sm font-semibold bg-medicalBlue text-white shadow-sm transition-all">All Products</button>
-                    <button onclick="filterProducts('tablet')" class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Tablets</button>
-                    <button onclick="filterProducts('capsule')" class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Capsules</button>
-                    <button onclick="filterProducts('syrup')" class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Syrups</button>
-                    <button onclick="filterProducts('injectable')" class="filter-btn px-5 py-2 rounded-xl text-sm font-semibold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Injectables</button>
-                </div>
-            </div>
+        <!-- Filter Controls -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+            <button class="filter-btn" onclick="filterProducts('skincare')">Skincare & Derma</button>
+            <button class="filter-btn" onclick="filterProducts('haircare')">Hair Care</button>
+        </div>
 
-            <!-- Product Grid -->
-            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="product-card card-hover bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between" data-category="tablet">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-sky-100 text-medicalBlue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Tablet</span>
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">Alu-Alu Packing</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-navyDeep">JEFF-CV 625</h3>
-                        <p class="text-sm font-medium text-slate-500 mt-1">Amoxycillin & Potassium Clavulanate Tablets IP</p>
-                        <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <strong>Composition:</strong> Amoxycillin Trihydrate eq. to Amoxycillin 500mg + Potassium Clavulanate Diluted eq. to Clavulanic Acid 125mg.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">Rx Only</span>
-                        <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
-                            <span>Inquire Stock</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
+        <!-- Products Cards Grid -->
+        <div class="products-grid">
+            
+            <!-- Product 1: Lumiray Sunscreen -->
+            <div class="product-card" data-category="skincare">
+                <div class="product-img-wrapper">
+                    <img src="1000347717.jpg" alt="Lumiray SPF50 Sunscreen">
                 </div>
-
-                <!-- Product 2 -->
-                <div class="product-card card-hover bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between" data-category="capsule">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Capsule</span>
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">Hard Gelatin</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-navyDeep">RABO-DSR</h3>
-                        <p class="text-sm font-medium text-slate-500 mt-1">Rabeprazole Sodium & Domperidone Capsules</p>
-                        <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <strong>Composition:</strong> Rabeprazole Sodium (Enteric Coated) 20mg + Domperidone (Sustained Release) 30mg.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">Rx Only</span>
-                        <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
-                            <span>Inquire Stock</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card card-hover bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between" data-category="syrup">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Syrup</span>
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">Glass / Pet Bottle</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-navyDeep">JEFFCOF-LS</h3>
-                        <p class="text-sm font-medium text-slate-500 mt-1">Levosalbutamol, Ambroxol & Guaiphenesin Syrup</p>
-                        <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <strong>Composition:</strong> Levosalbutamol 1mg + Ambroxol HCl 30mg + Guaiphenesin 50mg / 5ml.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">Rx Only</span>
-                        <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
-                            <span>Inquire Stock</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card card-hover bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between" data-category="injectable">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Injectable</span>
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">Vial with Water</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-navyDeep">JEFFTAZ-1000</h3>
-                        <p class="text-sm font-medium text-slate-500 mt-1">Ceftriaxone & Sulbactam Injection</p>
-                        <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <strong>Composition:</strong> Ceftriaxone Sodium eq. to Ceftriaxone 1000mg + Sulbactam Sodium 500mg.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">Hospital Use</span>
-                        <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
-                            <span>Inquire Stock</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card card-hover bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between" data-category="tablet">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-sky-100 text-medicalBlue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Tablet</span>
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">Blister Packing</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-navyDeep">PANO-P</h3>
-                        <p class="text-sm font-medium text-slate-500 mt-1">Pantoprazole & Domperidone Tablets</p>
-                        <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <strong>Composition:</strong> Pantoprazole Sodium (EC) 40mg + Domperidone (SR) 30mg.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">Rx Only</span>
-                        <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
-                            <span>Inquire Stock</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card card-hover bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between" data-category="capsule">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Capsule</span>
-                            <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">Soft Gelatin</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-navyDeep">JEFF-MECO</h3>
-                        <p class="text-sm font-medium text-slate-500 mt-1">Methylcobalamin, Alpha Lipoic Acid & Vitamins</p>
-                        <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                            <strong>Composition:</strong> Methylcobalamin 1500 mcg + Alpha Lipoic Acid 100mg + Benfotiamine + Pyridoxine.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="text-xs text-slate-400 font-medium">Rx Only</span>
-                        <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
-                            <span>Inquire Stock</span>
-                            <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
+                <div class="product-info">
+                    <span class="product-tag">Dermatology</span>
+                    <h3 class="product-title">Lumiray Sunscreen</h3>
+                    <p class="product-desc">Broad spectrum SPF50 protection against harmful UVA/UVB rays and photo-damage.</p>
+                    <div class="product-meta">
+                        <span><strong>Size:</strong> 100g</span>
+                        <span><strong>Type:</strong> Tube</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Medical Disclaimer Badge -->
-            <div class="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-6 flex items-start space-x-4 text-amber-900">
-                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl mt-0.5 shrink-0"></i>
-                <div class="text-xs sm:text-sm leading-relaxed">
-                    <strong class="font-bold block mb-1">Medical Disclaimer:</strong>
-                    The information provided on this product catalog is intended for registered medical practitioners, stockists, and pharmaceutical distributors only. Prescription medicines should always be dispensed under the supervision of a qualified physician.
+            <!-- Product 2: Lumiray Shampoo -->
+            <div class="product-card" data-category="haircare">
+                <div class="product-img-wrapper">
+                    <img src="1000347713.jpg" alt="Lumiray Anti Dandruff Shampoo">
                 </div>
+                <div class="product-info">
+                    <span class="product-tag">Hair Care</span>
+                    <h3 class="product-title">Lumiray Shampoo</h3>
+                    <p class="product-desc">Advanced anti-dandruff formulation that reduces hair fall and refreshes scalp health.</p>
+                    <div class="product-meta">
+                        <span><strong>Size:</strong> 100ml</span>
+                        <span><strong>Type:</strong> Bottle</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: Lumiray Cream -->
+            <div class="product-card" data-category="skincare">
+                <div class="product-img-wrapper">
+                    <img src="1000347715.jpg" alt="Lumiray Skin Brightening Cream">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Skincare</span>
+                    <h3 class="product-title">Lumiray Cream</h3>
+                    <p class="product-desc">Skin brightening cream that improves skin texture and reduces pigmentation.</p>
+                    <div class="product-meta">
+                        <span><strong>Size:</strong> 50g</span>
+                        <span><strong>Type:</strong> Jar</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: Lumiray Face Wash -->
+            <div class="product-card" data-category="skincare">
+                <div class="product-img-wrapper">
+                    <img src="1000347711.jpg" alt="Lumiray Face Wash">
+                </div>
+                <div class="product-info">
+                    <span class="product-tag">Skincare</span>
+                    <h3 class="product-title">Lumiray Face Wash</h3>
+                    <p class="product-desc">Deep cleansing face wash that hydrates skin and reduces tan effectively.</p>
+                    <div class="product-meta">
+                        <span><strong>Size:</strong> 100ml</span>
+                        <span><strong>Type:</strong> Pump Bottle</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Quality Metrics Banner -->
+        <div id="quality" class="quality-banner">
+            <div class="quality-item">
+                <h4>WHO-GMP Units</h4>
+                <p>Contract manufacturing done through certified cleanroom facilities.</p>
+            </div>
+            <div class="quality-item">
+                <h4>Quality Assured</h4>
+                <p>Rigorous lab testing for purity, composition, and batch consistency.</p>
+            </div>
+            <div class="quality-item">
+                <h4>Tamper Proof</h4>
+                <p>High-grade aluminum, Alu-Alu, and protective outer packaging.</p>
             </div>
         </div>
     </section>
 
-    <!-- Quality Assurance Section -->
-    <section id="quality" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-600 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide">
-                        <i class="fa-solid fa-certificate"></i>
-                        <span>Zero Compromise on Quality</span>
+    <!-- Franchise & Business Inquiries Section -->
+    <section id="franchise" class="section">
+        <div class="forms-grid">
+            
+            <!-- PCD Franchise Form -->
+            <div class="form-card">
+                <h3>PCD / Distribution Inquiry</h3>
+                <form onsubmit="handleFormSubmit(event, 'Distribution')">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your full name" required>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
-                        Stringent Quality Checks & WHO-GMP Standards
-                    </h2>
-                    <p class="text-slate-600 leading-relaxed text-base">
-                        At Jeffrey Remedies, quality is not just a regulatory compliance; it is our utmost commitment to human health. Every batch of formulation undergoes rigorous chemical, microbiological, and stability testing before reaching the market.
-                    </p>
-                    <div class="space-y-4 pt-2">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                            <p class="text-sm text-slate-700 font-medium">Sourcing raw APIs exclusively from certified and audited chemical manufacturers.</p>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                            <p class="text-sm text-slate-700 font-medium">Advanced humidity-controlled storage and advanced Alu-Alu barrier blister packaging.</p>
-                        </div>
-                        <div class="flex items-start space-x-3">
-                            <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
-                                <i class="fa-solid fa-check text-xs"></i>
-                            </div>
-                            <p class="text-sm text-slate-700 font-medium">Regular audit reports matching ISO 9001:2015 and WHO-GMP guidelines.</p>
-                        </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="Enter phone number" required>
                     </div>
-                </div>
-
-                <div class="lg:col-span-7">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
-                            <div class="w-14 h-14 rounded-2xl bg-medicalBlue/10 text-medicalBlue flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-flask-vial"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-navyDeep mb-2">Lab Testing & Assay</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">HPLC and spectroscopy analysis performed on every single batch to ensure precise salt potency.</p>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
-                            <div class="w-14 h-14 rounded-2xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-box-archive"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-navyDeep mb-2">Moisture Protection</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">High-grade blister and Alu-Alu packaging shielding sensitive active ingredients from UV light and humidity.</p>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
-                            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-clipboard-check"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-navyDeep mb-2">Regulatory Audits</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">Periodic inspections by independent pharmaceutical quality boards guaranteeing complete safety compliance.</p>
-                        </div>
-                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
-                            <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-2xl mb-6">
-                                <i class="fa-solid fa-shield-heart"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-navyDeep mb-2">Patient Safety First</h3>
-                            <p class="text-sm text-slate-600 leading-relaxed">Zero-defect manufacturing tolerance ensuring safe therapeutic outcomes for critical care patients.</p>
-                        </div>
+                    <div class="form-group">
+                        <label>Target City / State</label>
+                        <input type="text" placeholder="e.g. Gorakhpur, UP" required>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PCD Franchise / Partnership Section -->
-    <section id="franchise" class="py-24 hero-gradient text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center space-x-2 bg-emerald-500/20 border border-emerald-500/30 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-semibold tracking-wide">
-                        <i class="fa-solid fa-handshake"></i>
-                        <span>Business Opportunity</span>
+                    <div class="form-group">
+                        <label>Inquiry Type</label>
+                        <select required>
+                            <option value="">Select Category</option>
+                            <option value="distributor">Stockist / Stock Distribution</option>
+                            <option value="pcd">PCD Pharma Franchise</option>
+                            <option value="thirdparty">Third-Party Business</option>
+                        </select>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                        PCD Pharma Franchise & Distribution Opportunities
-                    </h2>
-                    <p class="text-slate-300 text-base leading-relaxed">
-                        Are you an experienced medical representative, stockist, or pharmaceutical distributor looking to expand your business? Partner with **Jeffrey Remedies** for monopoly-based PCD pharma franchise rights across your region.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <div class="w-8 h-8 rounded-lg bg-medicalBlue/20 text-medicalBlue flex items-center justify-center font-bold">01</div>
-                                <h4 class="font-bold text-white">Monopoly Rights</h4>
-                            </div>
-                            <p class="text-xs text-slate-400">Exclusive distribution rights for your territory with zero internal competition.</p>
-                        </div>
-                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">02</div>
-                                <h4 class="font-bold text-white">Promotional Support</h4>
-                            </div>
-                            <p class="text-xs text-slate-400">Free visual aids, LBLs, doctor sample kits, MR bags, and reminder gifts.</p>
-                        </div>
-                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">03</div>
-                                <h4 class="font-bold text-white">Attractive Margins</h4>
-                            </div>
-                            <p class="text-xs text-slate-400">High trade margins ensuring robust profitability for stockists and distribution channels.</p>
-                        </div>
-                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">04</div>
-                                <h4 class="font-bold text-white">Timely Dispatch</h4>
-                            </div>
-                            <p class="text-xs text-slate-400">Rapid logistics and stock dispatch via reliable courier and transport partners.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5">
-                    <div class="bg-white text-navyDeep p-8 rounded-3xl shadow-2xl">
-                        <h3 class="text-2xl font-bold mb-2">Request Franchise Kit</h3>
-                        <p class="text-xs text-slate-500 mb-6">Fill in your details and our business development executive will get back to you within 24 hours.</p>
-                        
-                        <form id="franchise-form" onsubmit="handleFranchiseSubmit(event)" class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
-                                <input type="text" id="f-name" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="Dr. / Mr. John Doe">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
-                                <input type="tel" id="f-phone" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="+91 98765 43210">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Target Location / City</label>
-                                <input type="text" id="f-city" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="Gorakhpur, Lucknow, etc.">
-                            </div>
-                            <button type="submit" class="w-full bg-medicalBlue hover:bg-sky-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm mt-2">
-                                Submit Partnership Request
-                            </button>
-                        </form>
-                        <div id="franchise-success" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl text-center text-sm">
-                            <i class="fa-solid fa-circle-check text-emerald-600 text-lg mb-1 block"></i>
-                            Thank you! Your franchise inquiry has been successfully submitted.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Us Section -->
-    <section id="contact" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="inline-flex items-center space-x-2 bg-sky-50 text-medicalBlue px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4">
-                    <i class="fa-solid fa-headset"></i>
-                    <span>Get in Touch</span>
-                </div>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
-                    Corporate Office & Business Inquiries
-                </h2>
-                <p class="text-slate-600 mt-4 text-base">
-                    Reach out to our corporate headquarters for trade inquiries, stockist availability, or general corporate communications.
-                </p>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Submit Inquiry</button>
+                </form>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- Info Cards -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-2xl bg-medicalBlue/10 text-medicalBlue flex items-center justify-center shrink-0 text-xl">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-navyDeep text-base">Registered Office</h4>
-                            <p class="text-sm text-slate-600 mt-1 leading-relaxed">
-                                Jeffrey Remedies, Civil Lines, Near Medical College Road, Gorakhpur, Uttar Pradesh - 273001, India.
-                            </p>
-                        </div>
+            <!-- General Contact Form -->
+            <div id="contact" class="form-card">
+                <h3>Contact Registered Office</h3>
+                <form onsubmit="handleFormSubmit(event, 'General Contact')">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter name" required>
                     </div>
-
-                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-2xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center shrink-0 text-xl">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-navyDeep text-base">Official Email</h4>
-                            <p class="text-sm text-slate-600 mt-1">
-                                info@jeffreyremedies.com<br>
-                                support@jeffreyremedies.com
-                            </p>
-                        </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter email" required>
                     </div>
-
-                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex items-start space-x-4">
-                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center shrink-0 text-xl">
-                            <i class="fa-solid fa-phone-volume"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-navyDeep text-base">Helpline Support</h4>
-                            <p class="text-sm text-slate-600 mt-1">
-                                +91 (551) 234-5678<br>
-                                +91 98765 43210 (Mon - Sat, 9:00 AM - 6:00 PM)
-                            </p>
-                        </div>
+                    <div class="form-group">
+                        <label>Message / Requirements</label>
+                        <textarea rows="4" placeholder="Write your requirement here..." required></textarea>
                     </div>
-                </div>
-
-                <!-- Interactive Contact Form -->
-                <div class="lg:col-span-7">
-                    <div class="bg-slate-50 border border-slate-200 p-8 rounded-3xl shadow-sm">
-                        <h3 class="text-2xl font-bold text-navyDeep mb-2">Send Us a Message</h3>
-                        <p class="text-xs text-slate-500 mb-6">Have questions about our formulations or corporate policies? Drop us a note.</p>
-                        
-                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name</label>
-                                    <input type="text" id="c-name" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="John Doe">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
-                                    <input type="email" id="c-email" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="john@example.com">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Subject / Inquiry Type</label>
-                                <select id="c-subject" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue">
-                                    <option>General Business Inquiry</option>
-                                    <option>PCD Franchise Partnership</option>
-                                    <option>Product Availability & Catalog</option>
-                                    <option>Third-Party Manufacturing</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Message</label>
-                                <textarea id="c-message" rows="4" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="Write your message here..."></textarea>
-                            </div>
-                            <button type="submit" class="w-full bg-medicalBlue hover:bg-sky-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm mt-2">
-                                Send Message
-                            </button>
-                        </form>
-                        <div id="contact-success" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl text-center text-sm">
-                            <i class="fa-solid fa-circle-check text-emerald-600 text-lg mb-1 block"></i>
-                            Message sent successfully! Our team will get back to you shortly.
-                        </div>
-                    </div>
-                </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; background-color: var(--primary-blue);">Send Message</button>
+                </form>
             </div>
+
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-navyDeep text-white pt-16 pb-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-                <div class="lg:col-span-2 space-y-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-medicalBlue to-emeraldAccent flex items-center justify-center text-white shadow-lg">
-                            <i class="fa-solid fa-staff-snake text-xl"></i>
-                        </div>
-                        <span class="text-xl font-bold tracking-tight text-white">JEFFREY REMEDIES</span>
-                    </div>
-                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
-                        Jeffrey Remedies is a dynamic pharmaceutical enterprise dedicated to upholding the highest standards of safety, quality, and efficacy in healthcare formulations.
-                    </p>
-                    <div class="flex items-center space-x-4 pt-2">
-                        <a href="#home" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-medicalBlue flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
-                        <a href="#home" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-medicalBlue flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="fa-brands fa-twitter text-sm"></i></a>
-                        <a href="#home" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-medicalBlue flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Quick Links</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#home" class="hover:text-medicalBlue transition-colors">Home</a></li>
-                        <li><a href="#about" class="hover:text-medicalBlue transition-colors">About Us</a></li>
-                        <li><a href="#products" class="hover:text-medicalBlue transition-colors">Products Catalog</a></li>
-                        <li><a href="#quality" class="hover:text-medicalBlue transition-colors">Quality Assurance</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Opportunities</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><a href="#franchise" class="hover:text-medicalBlue transition-colors">PCD Pharma Franchise</a></li>
-                        <li><a href="#franchise" class="hover:text-medicalBlue transition-colors">Monopoly Rights</a></li>
-                        <li><a href="#contact" class="hover:text-medicalBlue transition-colors">Third-Party Manufacturing</a></li>
-                        <li><a href="#contact" class="hover:text-medicalBlue transition-colors">Distributor Inquiry</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Contact Info</h4>
-                    <ul class="space-y-2.5 text-sm text-slate-400">
-                        <li><i class="fa-solid fa-location-dot text-medicalBlue mr-2"></i> Gorakhpur, UP - 273001</li>
-                        <li><i class="fa-solid fa-envelope text-medicalBlue mr-2"></i> info@jeffreyremedies.com</li>
-                        <li><i class="fa-solid fa-phone text-medicalBlue mr-2"></i> +91 98765 43210</li>
-                    </ul>
-                </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Jeffrey Remedies</h4>
+                <p>A trusted manufacturer, supplier, and trading company in Prayagraj delivering high-quality healthcare and medical formulations.</p>
+                <p><strong>GSTIN:</strong> 09AYJPJ5724B1ZJ</p>
+                <p><strong>Proprietor:</strong> Mr. Khusroo Jafri</p>
             </div>
 
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-                <p>&copy; 2026 Jeffrey Remedies. All rights reserved.</p>
-                <p class="mt-4 sm:mt-0 text-center sm:text-right">
-                    Disclaimer: Information is for medical professionals and stockists. Always consult a physician for prescription drugs.
-                </p>
+            <div class="footer-col">
+                <h4>Registered Office</h4>
+                <p>D 41, Sector D, GTB Nagar, Kareli, Allahabad, Prayagraj, Uttar Pradesh, 211016, India</p>
             </div>
+
+            <div class="footer-col">
+                <h4>Additional Office</h4>
+                <p>A.O. A-4/ 276, Zaidi Villa, TTI Road, Jamia Nagar, Okhla, New Delhi-110025</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Details</h4>
+                <p><strong>Phone:</strong> +91 7084917850</p>
+                <p><strong>Alternate:</strong> +91 9336841671</p>
+                <p><strong>Email:</strong> jeffrey.remedies.mkd@gmail.com</p>
+                <p><strong>Domain:</strong> jeffreyremedies.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2021-2026 Jeffrey Remedies. All Rights Reserved.</p>
+            <p>Disclaimer: Information on this website is for medical and informational purposes only.</p>
         </div>
     </footer>
 
+    <!-- Interactive Scripts -->
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Product Filtering Function
+        // Interactive Product Filtering
         function filterProducts(category) {
             const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-medicalBlue', 'text-white', 'active-filter');
-                btn.classList.add('bg-white', 'text-slate-700');
-            });
-
-            event.target.classList.remove('bg-white', 'text-slate-700');
-            event.target.classList.add('bg-medicalBlue', 'text-white', 'active-filter');
-
             const cards = document.querySelectorAll('.product-card');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
             cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
@@ -788,24 +823,11 @@
             });
         }
 
-        // Franchise Form Submission Handler
-        function handleFranchiseSubmit(event) {
+        // Interactive Form Feedback
+        function handleFormSubmit(event, formType) {
             event.preventDefault();
-            const form = document.getElementById('franchise-form');
-            const successDiv = document.getElementById('franchise-success');
-            
-            form.style.display = 'none';
-            successDiv.classList.remove('hidden');
-        }
-
-        // Contact Form Submission Handler
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            const form = document.getElementById('contact-form');
-            const successDiv = document.getElementById('contact-success');
-            
-            form.style.display = 'none';
-            successDiv.classList.remove('hidden');
+            alert(`Thank you! Your ${formType} message has been sent successfully to Jeffrey Remedies. We will get back to you shortly.`);
+            event.target.reset();
         }
     </script>
 </body>
