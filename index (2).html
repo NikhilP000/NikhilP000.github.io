@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeffrey Remedies | Third-Party Pharmaceutical Manufacturer & Supplier</title>
+    <meta name="description" content="Jeffrey Remedies - Leading third-party pharmaceutical manufacturer, supplier & trading company based in Prayagraj & Delhi. High-quality tablets, capsules, syrups, injections, ointments, and specialty therapeutic divisions.">
+    <link rel="icon" href="logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        const sh = n => `rgb(var(--sky-${n}) / <alpha-value>)`, em = n => `rgb(var(--emerald-${n}) / <alpha-value>)`;
+        const steps = [50,100,200,300,400,500,600,700,800,900];
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medicalBlue: sh(600),
+                        navyDeep: 'rgb(var(--dark) / <alpha-value>)',
+                        emeraldAccent: em(500),
+                        slateLight: '#f8fafc',
+                        sky: Object.fromEntries(steps.map(n => [n, sh(n)])),
+                        emerald: Object.fromEntries(steps.map(n => [n, em(n)]))
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <script>
+        /* ===== Colour themes & design styles ===== */
+        const THEMES = {
+            ocean:   { name: 'Ocean Blue',        p: '#0284c7', a: '#10b981', d: '#0f172a' },
+            brand:   { name: 'Logo Red & Black',  p: '#dc2626', a: '#f87171', d: '#0a0a0a' },
+            redgold: { name: 'Red & Gold',        p: '#b91c1c', a: '#f59e0b', d: '#1a0b0b' },
+            blackgold:{ name: 'Black & Gold',     p: '#ca8a04', a: '#eab308', d: '#0a0a0a' },
+            rose:    { name: 'Rose & Charcoal',   p: '#e11d48', a: '#64748b', d: '#18181b' },
+            indigo:  { name: 'Midnight Indigo',   p: '#4f46e5', a: '#06b6d4', d: '#0f1230' },
+            forest:  { name: 'Forest & Lime',     p: '#15803d', a: '#84cc16', d: '#0a1f12' },
+            cyan:    { name: 'Charcoal & Cyan',   p: '#0891b2', a: '#f43f5e', d: '#111827' },
+            green:   { name: 'Emerald Green',     p: '#059669', a: '#0ea5e9', d: '#052e2b' },
+            purple:  { name: 'Royal Purple',      p: '#7c3aed', a: '#ec4899', d: '#1e1b4b' },
+            sunset:  { name: 'Sunset Orange',     p: '#ea580c', a: '#14b8a6', d: '#1c1917' },
+            teal:    { name: 'Teal & Gold',       p: '#0d9488', a: '#d97706', d: '#0f2a2e' }
+        };
+        const hexRgb = h => [1,3,5].map(i => parseInt(h.substr(i,2),16));
+        const mix = (h, t, k) => hexRgb(h).map((v,i) => Math.round(v + (t[i]-v)*k)).join(' ');
+        function applyTheme(key) {
+            const t = THEMES[key] || THEMES.ocean, r = document.documentElement.style, W=[255,255,255], K=[0,0,0];
+            const P = {50:[W,.93],100:[W,.85],200:[W,.7],300:[W,.5],400:[W,.3],500:[W,.15],700:[K,.15],800:[K,.3],900:[K,.45]};
+            const A = {50:[W,.93],100:[W,.85],200:[W,.7],300:[W,.5],400:[W,.25],600:[K,.12],700:[K,.25],800:[K,.38],900:[K,.5]};
+            for (const n of steps) {
+                r.setProperty('--sky-'+n, n===600 ? hexRgb(t.p).join(' ') : mix(t.p, ...P[n]));
+                r.setProperty('--emerald-'+n, n===500 ? hexRgb(t.a).join(' ') : mix(t.a, ...A[n]));
+            }
+            r.setProperty('--dark', hexRgb(t.d).join(' '));
+            r.setProperty('--dark2', mix(t.d, [255,255,255], .12));
+            try { localStorage.setItem('jr-theme', key); } catch(e) {}
+        }
+        function applyStyle(key) {
+            document.documentElement.classList.remove('st-sharp','dm');
+            if (key === 'sharp') document.documentElement.classList.add('st-sharp');
+            if (key === 'dark') document.documentElement.classList.add('dm');
+            try { localStorage.setItem('jr-style', key); } catch(e) {}
+        }
+        (function(){ let t='ocean', st='soft'; try { t = localStorage.getItem('jr-theme') || t; st = localStorage.getItem('jr-style') || st; } catch(e) {} applyTheme(t); applyStyle(st); })();
+    </script>
+    <style>
+        .glass-nav { background: rgb(var(--dark) / .96); backdrop-filter: blur(12px); }
+        .hero-gradient { background: linear-gradient(135deg, rgb(var(--dark)) 0%, rgb(var(--dark2)) 50%, rgb(var(--sky-600)) 100%); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgb(var(--sky-600) / .15), 0 10px 10px -5px rgb(var(--sky-600) / .08); }
+        .tab-btn.active { background-color: rgb(var(--sky-600)); color: #ffffff; font-weight: 700; shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        /* Style: Sharp Classic */
+        .st-sharp .rounded-3xl, .st-sharp .rounded-2xl { border-radius: 4px !important; }
+        .st-sharp .rounded-xl, .st-sharp .rounded-lg { border-radius: 2px !important; }
+        .st-sharp .rounded-full { border-radius: 4px !important; }
+        /* Style: Dark mode */
+        .dm body { background: #0b1220; color: #e2e8f0; }
+        .dm .bg-white, .dm .bg-slate-100 { background-color: #0f172a !important; }
+        .dm .bg-slate-50, .dm .product-card { background-color: #162033 !important; }
+        .dm .bg-sky-50, .dm .bg-sky-100, .dm .bg-emerald-50, .dm .bg-emerald-100, .dm .bg-amber-50 { background-color: #1e293b !important; }
+        .dm .border-slate-100, .dm .border-slate-200 { border-color: #26334a !important; }
+        .dm .text-navyDeep { color: #fff !important; }
+        .dm .text-slate-500, .dm .text-slate-600, .dm .text-slate-700 { color: #cbd5e1 !important; }
+        .dm .text-slate-800 { color: #e2e8f0 !important; }
+        .dm .text-amber-900 { color: #fde68a !important; }
+        .dm input, .dm select, .dm textarea { background-color: #0f172a !important; color: #fff !important; border-color: #334155 !important; }
+        /* Theme panel */
+        #theme-panel { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
+        .swatch { width: 34px; height: 34px; border-radius: 999px; border: 3px solid #fff; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer; }
+        .swatch.on { box-shadow: 0 0 0 3px #0f172a; }
+    </style>
+</head>
+<body class="bg-slateLight text-slate-800 font-sans antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-slate-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <!-- Prominent Brand Logo & Title -->
+                <a href="#home" class="flex items-center space-x-4 group">
+                    <img src="logo.jpg" alt="Jeffrey Remedies logo" class="h-16 w-auto rounded-xl bg-white p-1 shadow-md group-hover:scale-105 transition-transform">
+                    <div>
+                        <!-- Enriched Font Size for Company Name -->
+                        <span class="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white block leading-none drop-shadow-sm">JEFFREY REMEDIES</span>
+                        <span class="text-xs sm:text-sm text-sky-400 font-bold tracking-widest uppercase mt-1 block">Third-Party Manufacturer &amp; Supplier</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-7 font-semibold text-sm">
+                    <a href="#home" class="text-white hover:text-sky-400 transition-colors">Home</a>
+                    <a href="#about" class="text-slate-300 hover:text-sky-400 transition-colors">About Us</a>
+                    <a href="#divisions" class="text-slate-300 hover:text-sky-400 transition-colors">Divisions</a>
+                    <a href="#dosage-forms" class="text-slate-300 hover:text-sky-400 transition-colors">Dosage Forms</a>
+                    <a href="#products" class="text-slate-300 hover:text-sky-400 transition-colors">Products</a>
+                    <a href="#quality" class="text-slate-300 hover:text-sky-400 transition-colors">Quality</a>
+                    <a href="#franchise" class="text-slate-300 hover:text-sky-400 transition-colors">PCD Franchise</a>
+                    <a href="#contact" class="text-slate-300 hover:text-sky-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Partner CTA Button -->
+                <div class="hidden lg:block">
+                    <a href="#contact" class="bg-medicalBlue hover:bg-sky-500 text-white font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-sky-500/25 transition-all flex items-center space-x-2 text-sm">
+                        <span>Get A Manufacturing Quote</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2 rounded-lg bg-slate-800/80">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navyDeep border-t border-slate-800 px-4 pt-4 pb-6 space-y-3">
+            <a href="#home" class="block text-white font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Home</a>
+            <a href="#about" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">About Us</a>
+            <a href="#divisions" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Therapeutic Divisions</a>
+            <a href="#dosage-forms" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Dosage Forms</a>
+            <a href="#products" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">All Products Catalog</a>
+            <a href="#quality" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Quality Assurance</a>
+            <a href="#franchise" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">PCD Franchise</a>
+            <a href="#contact" class="block text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Contact Us</a>
+            <div class="pt-2">
+                <a href="#contact" class="w-full bg-medicalBlue hover:bg-sky-600 text-white text-center font-bold py-3 rounded-xl block shadow">Get Manufacturing Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-36 pb-24 md:pt-48 md:pb-36 hero-gradient text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(rgb(var(--sky-600))_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-sky-500/20 border border-sky-400/30 px-4 py-2 rounded-full text-sky-300 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
+                        <i class="fa-solid fa-shield-halved text-emeraldAccent"></i>
+                        <span>ISO Certified &bull; Contract Manufacturing &bull; Pan-India Distribution</span>
+                    </div>
+
+                    <!-- Company Name Hero Title -->
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none text-white">
+                        JEFFREY REMEDIES
+                    </h1>
+                    <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-sky-100 to-emerald-300">
+                        Third-Party Manufacturer, Supplier &amp; Trading Company
+                    </p>
+                    <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Delivering world-class pharmaceutical manufacturing solutions and high-potency formulations. Serving leading therapeutic divisions including <span class="text-white font-semibold">Dermatology, Cardiovascular, Orthopedic, Urology, Pain Management</span>, and complete dosage formulations from <span class="text-white font-semibold">Tablets &amp; Capsules to Injections &amp; Sprays</span>.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#divisions" class="w-full sm:w-auto bg-medicalBlue hover:bg-sky-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl transition-all flex items-center justify-center space-x-3 text-base">
+                            <span>Explore Divisions</span>
+                            <i class="fa-solid fa-layer-group"></i>
+                        </a>
+                        <a href="#dosage-forms" class="w-full sm:w-auto bg-slate-800/90 hover:bg-slate-800 border border-slate-700 text-white font-bold px-8 py-4 rounded-xl transition-all flex items-center justify-center space-x-3 text-base">
+                            <span>Browse Dosage Forms</span>
+                            <i class="fa-solid fa-pills text-emeraldAccent"></i>
+                        </a>
+                    </div>
+
+                    <!-- Key Trust Indicators -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/80 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-sky-400">12+</p>
+                            <p class="text-xs text-slate-400 font-semibold uppercase mt-1">Therapeutic Divisions</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-emerald-400">10+</p>
+                            <p class="text-xs text-slate-400 font-semibold uppercase mt-1">Dosage Formats</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-black text-sky-400">WHO-GMP</p>
+                            <p class="text-xs text-slate-400 font-semibold uppercase mt-1">Manufacturing Quality</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Graphic -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-medicalBlue to-emeraldAccent opacity-30 blur-xl"></div>
+                        <div class="relative bg-navyDeep/90 border border-slate-700 rounded-3xl p-8 shadow-2xl backdrop-blur-md">
+                            <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-2xl bg-medicalBlue/20 flex items-center justify-center text-medicalBlue">
+                                        <i class="fa-solid fa-building-circle-check text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Company Credentials</h4>
+                                        <p class="text-xs text-slate-400">Verified Corporate Entity</p>
+                                    </div>
+                                </div>
+                                <span class="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded-full font-bold">GST Active</span>
+                            </div>
+                            <div class="space-y-4 pt-6">
+                                <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                                    <p class="text-xs text-slate-400 uppercase font-semibold">GST Registration No.</p>
+                                    <p class="text-emerald-400 font-black tracking-wider mt-1 text-lg">09AYJPJ5724B1ZJ</p>
+                                </div>
+                                <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                                    <p class="text-xs text-slate-400 uppercase font-semibold">Primary Capabilities</p>
+                                    <p class="text-sky-300 font-bold mt-1 text-sm">Third-Party Manufacturing, Bulk Supply &amp; Pharma Trading</p>
+                                </div>
+                                <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800">
+                                    <p class="text-xs text-slate-400 uppercase font-semibold">Corporate Hubs</p>
+                                    <p class="text-white font-semibold mt-1 text-xs"><i class="fa-solid fa-location-dot text-medicalBlue mr-1"></i> Prayagraj, UP &bull; <i class="fa-solid fa-location-dot text-medicalBlue mr-1"></i> New Delhi</p>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                                <span>Proprietor: Mr. Khusroo Jafri</span>
+                                <span class="text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i> Est. 2021</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-sky-50 text-medicalBlue px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">
+                        <i class="fa-solid fa-building-shield"></i>
+                        <span>About Jeffrey Remedies</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
+                        Your Strategic Third-Party Manufacturing &amp; Pharma Partner
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        <strong class="font-extrabold text-navyDeep">Jeffrey Remedies</strong>, established in 2021 under the leadership of proprietor Mr. Khusroo Jafri, is a leading third-party manufacturing company, bulk supplier, and trading enterprise with headquarters in Prayagraj and corporate office in New Delhi.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        We collaborate with licensed, state-of-the-art WHO-GMP certified manufacturing facilities to deliver comprehensive pharmaceutical solutions. Whether you require specialty therapeutic formulations or bulk manufacturing across diversos dosage forms, our streamlined supply chain ensures zero-defect quality and regulatory compliance.
+                    </p>
+                    
+                    <!-- Feature Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-medicalBlue/10 text-medicalBlue flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-industry text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navyDeep text-sm">Third-Party Manufacturing</h4>
+                                <p class="text-xs text-slate-500 mt-1">Flexible MOQs, custom packaging, and fast turnaround for brand owners.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-award text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navyDeep text-sm">ISO Certified Quality</h4>
+                                <p class="text-xs text-slate-500 mt-1">Rigorous QA/QC testing protocols for raw material and finished formulations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-br from-navyDeep to-slate-800 p-8 rounded-3xl text-white shadow-xl">
+                            <i class="fa-solid fa-handshake-angle text-4xl text-sky-400 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Ethical Business</h3>
+                            <p class="text-sm text-slate-300">Complete transparency with stockists, distributors, and franchise partners.</p>
+                        </div>
+                        <div class="bg-sky-50 border border-sky-100 p-8 rounded-3xl text-navyDeep">
+                            <i class="fa-solid fa-vials text-4xl text-medicalBlue mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Dual Search Pathway</h3>
+                            <p class="text-sm text-slate-600">Easily browse formulations by Therapeutic Division or Dosage Format.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <div class="bg-emerald-50 border border-emerald-100 p-8 rounded-3xl text-navyDeep">
+                            <i class="fa-solid fa-shield-virus text-4xl text-emeraldAccent mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Regulatory Standard</h3>
+                            <p class="text-sm text-slate-600">Full GST registration (09AYJPJ5724B1ZJ) and drug regulatory compliance.</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-medicalBlue to-sky-600 p-8 rounded-3xl text-white shadow-xl">
+                            <i class="fa-solid fa-truck-fast text-4xl text-emerald-300 mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Pan-India Supply</h3>
+                            <p class="text-sm text-sky-100">Robust distribution network ensuring prompt dispatch across all Indian states.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: Therapeutic Divisions -->
+    <section id="divisions" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-2 bg-sky-100 text-medicalBlue px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-4">
+                    <i class="fa-solid fa-stethoscope"></i>
+                    <span>Medical Specialties</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
+                    Serving Key Therapeutic Divisions
+                </h2>
+                <p class="text-slate-600 mt-4 text-base">
+                    We manufacture, supply, and trade across a diverse spectrum of specialized medical branches to meet patient care needs nationwide.
+                </p>
+            </div>
+
+            <!-- Divisions Grid (12 Items) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Dermatology -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-pump-medical"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Dermatology</h3>
+                    <p class="text-xs text-slate-500 mt-2">Skin care, anti-fungal, eczema, creams &amp; medicated soaps.</p>
+                </div>
+
+                <!-- Orthopedic -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-bone"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Orthopedic</h3>
+                    <p class="text-xs text-slate-500 mt-2">Bone health, joint supplements, calcium &amp; anti-inflammatory care.</p>
+                </div>
+
+                <!-- Cardiovascular -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Cardiovascular</h3>
+                    <p class="text-xs text-slate-500 mt-2">Hypertension, cardiac health &amp; lipid-lowering formulations.</p>
+                </div>
+
+                <!-- Urology -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Urology</h3>
+                    <p class="text-xs text-slate-500 mt-2">Urinary tract health, stone alkalizers &amp; prostate management.</p>
+                </div>
+
+                <!-- Pain Management -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-hand-holding-medical"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Pain Management</h3>
+                    <p class="text-xs text-slate-500 mt-2">Analgesics, muscle relaxants, topical sprays &amp; pain gels.</p>
+                </div>
+
+                <!-- Gastrointestinal -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-stomach"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Gastrointestinal</h3>
+                    <p class="text-xs text-slate-500 mt-2">Antacids, PPIs, digestive enzymes &amp; laxative suspensions.</p>
+                </div>
+
+                <!-- Nutritional -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-apple-whole"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Nutritional</h3>
+                    <p class="text-xs text-slate-500 mt-2">Multivitamins, minerals, iron tonic syrups &amp; dietary supplements.</p>
+                </div>
+
+                <!-- Nephrology -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-vial-circle-check"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Nephrology</h3>
+                    <p class="text-xs text-slate-500 mt-2">Renal care supplements, phosphate binders &amp; electrolyte balance.</p>
+                </div>
+
+                <!-- Ayurvedic -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Ayurvedic &amp; Herbal</h3>
+                    <p class="text-xs text-slate-500 mt-2">Herbal liver tonic, immunity boosters &amp; botanical wellness.</p>
+                </div>
+
+                <!-- Ophthalmic -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Ophthalmic</h3>
+                    <p class="text-xs text-slate-500 mt-2">Sterile eye drops, lubricating drops &amp; anti-infective eye care.</p>
+                </div>
+
+                <!-- Respiratory -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-lungs"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">Respiratory</h3>
+                    <p class="text-xs text-slate-500 mt-2">Cough syrups, bronchodilators, anti-allergic &amp; decongestants.</p>
+                </div>
+
+                <!-- General Medicine -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm card-hover text-center group">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-sky-50 text-medicalBlue flex items-center justify-center text-2xl mb-4 group-hover:bg-medicalBlue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-briefcase-medical"></i>
+                    </div>
+                    <h3 class="font-bold text-navyDeep text-lg">General Medicine</h3>
+                    <p class="text-xs text-slate-500 mt-2">Broad spectrum antibiotics, antipyretics, painkillers &amp; routine care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Section-Wise Dosage Forms -->
+    <section id="dosage-forms" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-600 px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-4">
+                    <i class="fa-solid fa-pills"></i>
+                    <span>Manufacturing Capabilities</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
+                    Dosage Formulations (Section-Wise)
+                </h2>
+                <p class="text-slate-600 mt-4 text-base">
+                    We offer third-party manufacturing and supply across all major pharmaceutical section lines and delivery systems.
+                </p>
+            </div>
+
+            <!-- Dosage Form Grid (10 Formats) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Tablets -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-tablets"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Tablets</h4>
+                    <p class="text-xs text-slate-500 mt-1">Uncoated, Film-coated, Sustained Release &amp; Effervescent</p>
+                </div>
+
+                <!-- Capsules -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-capsules"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Capsules</h4>
+                    <p class="text-xs text-slate-500 mt-1">Hard Gelatin, Softgel, HPMC Veg Capsules &amp; Pellets</p>
+                </div>
+
+                <!-- Syrups -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-bottle-droplet"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Syrups</h4>
+                    <p class="text-xs text-slate-500 mt-1">Oral Liquids, Tonics &amp; Flavored Pediatric Formulations</p>
+                </div>
+
+                <!-- Injections -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-syringe"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Injections</h4>
+                    <p class="text-xs text-slate-500 mt-1">Liquid Injectables, Lyophilized Vials &amp; Ampoules</p>
+                </div>
+
+                <!-- Eye Drops -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-eye-dropper"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Eye Drops</h4>
+                    <p class="text-xs text-slate-500 mt-1">Aseptic Ophthalmic Drops &amp; Ear/Nasal Solutions</p>
+                </div>
+
+                <!-- Dry Syrups -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-prescription-bottle"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Dry Syrups</h4>
+                    <p class="text-xs text-slate-500 mt-1">Reconstitutable Pediatric Antibiotics &amp; Powders</p>
+                </div>
+
+                <!-- Ointments & Sprays -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-spray-can"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Ointments &amp; Sprays</h4>
+                    <p class="text-xs text-slate-500 mt-1">Topical Gels, Medicated Ointments &amp; Pain Sprays</p>
+                </div>
+
+                <!-- Lotions -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-pump-soap"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Lotions</h4>
+                    <p class="text-xs text-slate-500 mt-1">Dermatological Lotions, Emulsions &amp; Moisturizers</p>
+                </div>
+
+                <!-- Shampoo & Wash -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-shower"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Shampoo &amp; Wash</h4>
+                    <p class="text-xs text-slate-500 mt-1">Anti-Dandruff Shampoos &amp; Medicated Face Washes</p>
+                </div>
+
+                <!-- Suspensions -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center card-hover">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fa-solid fa-flask text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-navyDeep text-base">Suspensions</h4>
+                    <p class="text-xs text-slate-500 mt-1">Oral Liquid Suspensions &amp; Antacid Mixtures</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Master Product Catalog & Interactive Filters -->
+    <section id="products" class="py-24 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-2 bg-sky-100 text-medicalBlue px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-4">
+                    <i class="fa-solid fa-box-open"></i>
+                    <span>Product Catalog</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
+                    Featured Products &amp; Formulations
+                </h2>
+                <p class="text-slate-600 mt-4 text-base">
+                    Explore our flagship formulations under the Lumiray brand and third-party stockist lines. Filter by product type:
+                </p>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+                    <button onclick="filterProducts('all', event)" class="filter-btn active-filter px-5 py-2.5 rounded-xl text-sm font-bold bg-medicalBlue text-white shadow-sm transition-all">All Products</button>
+                    <button onclick="filterProducts('face', event)" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Face Washes</button>
+                    <button onclick="filterProducts('skin', event)" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Skin Creams</button>
+                    <button onclick="filterProducts('hair', event)" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Shampoos</button>
+                    <button onclick="filterProducts('sun', event)" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all">Sunscreen</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Lumiray Face Wash -->
+                <div class="product-card card-hover bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between" data-category="face">
+                    <div>
+                        <img src="face_was.jpg" alt="Lumiray Face Wash" loading="lazy" class="w-full aspect-square object-cover object-[center_45%] bg-slate-100">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-sky-100 text-medicalBlue text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Shampoo/Wash &bull; Derm</span>
+                                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">100 ml</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep">Lumiray Face Wash</h3>
+                            <p class="text-sm font-medium text-slate-500 mt-1">Skin Brightening &amp; Deep Cleansing</p>
+                            <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <strong>Key Composition:</strong> L-Glutathione, Kojic Acid, Salicylic Acid, Vitamin E, Glycolic Acid &amp; Aloe Vera.
+                            </p>
+                            <p class="text-xs text-slate-500 mt-3">Hydrates skin &bull; Deep cleansing &bull; Lightens skin tone</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-sm font-bold text-navyDeep">MRP &#8377;560 <span class="text-xs font-normal text-slate-400">(incl. taxes)</span></span>
+                            <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
+                                <span>Inquire Stock</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lumiray Skin Brightening Cream -->
+                <div class="product-card card-hover bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between" data-category="skin">
+                    <div>
+                        <img src="briteing.jpg" alt="Lumiray Skin Brightening Cream" loading="lazy" class="w-full aspect-square object-cover object-[center_45%] bg-slate-100">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ointment/Cream &bull; Derm</span>
+                                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">50 g</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep">Lumiray Skin Brightening Cream</h3>
+                            <p class="text-sm font-medium text-slate-500 mt-1">Advanced Skin Texture Formula</p>
+                            <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <strong>Key Composition:</strong> Advanced Skin Tone Brightening Agents &amp; Anti-pigmentation actives.
+                            </p>
+                            <p class="text-xs text-slate-500 mt-3">Brightens tone &bull; Reduces pigmentation &bull; Evens texture</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-sm font-bold text-navyDeep">MRP &#8377;550 <span class="text-xs font-normal text-slate-400">(incl. taxes)</span></span>
+                            <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
+                                <span>Inquire Stock</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lumiray Anti Dandruff Shampoo -->
+                <div class="product-card card-hover bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between" data-category="hair">
+                    <div>
+                        <img src="shampoo.jpg" alt="Lumiray Anti Dandruff Shampoo" loading="lazy" class="w-full aspect-square object-cover object-[center_45%] bg-slate-100">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Shampoo/Wash &bull; Derm</span>
+                                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">100 ml</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep">Lumiray Anti Dandruff Shampoo</h3>
+                            <p class="text-sm font-medium text-slate-500 mt-1">Zero Flakes Medicated Formula</p>
+                            <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <strong>Key Composition:</strong> Ketoconazole, Zinc Pyrithione, D-Panthenol &amp; Tea Tree Oil.
+                            </p>
+                            <p class="text-xs text-slate-500 mt-3">Reduces hair fall &bull; Scalp clarification &bull; Anti-fungal</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-sm font-bold text-navyDeep">MRP &#8377;350 <span class="text-xs font-normal text-slate-400">(incl. taxes)</span></span>
+                            <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
+                                <span>Inquire Stock</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lumiray SPF 50 Sunscreen -->
+                <div class="product-card card-hover bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between" data-category="sun">
+                    <div>
+                        <img src="sunscreen.jpg" alt="Lumiray SPF 50 Sunscreen" loading="lazy" class="w-full aspect-square object-cover object-[center_45%] bg-slate-100">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lotion/Lotion &bull; Derm</span>
+                                <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">100 g</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep">Lumiray SPF 50 Sunscreen</h3>
+                            <p class="text-sm font-medium text-slate-500 mt-1">Broad Spectrum UVA + UVB Protection</p>
+                            <p class="text-xs text-slate-400 mt-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <strong>Key Composition:</strong> Titanium Dioxide, Octyl Methoxycinnamate &amp; Triazine filters.
+                            </p>
+                            <p class="text-xs text-slate-500 mt-3">8 Hour protection &bull; Water resistant &bull; Non-greasy</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-sm font-bold text-navyDeep">MRP &#8377;790 <span class="text-xs font-normal text-slate-400">(incl. taxes)</span></span>
+                            <a href="#contact" class="text-medicalBlue hover:text-sky-700 font-semibold text-sm flex items-center space-x-1">
+                                <span>Inquire Stock</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Disclaimer Badge -->
+            <div class="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-4 sm:p-6 flex items-start space-x-4 text-amber-900">
+                <i class="fa-solid fa-triangle-exclamation text-amber-600 text-xl mt-0.5 shrink-0"></i>
+                <div class="text-xs sm:text-sm leading-relaxed">
+                    <strong class="font-bold block mb-1">B2B &amp; Trade Information Disclaimer:</strong>
+                    Product listings and therapeutic compositions are intended for registered medical practitioners, stockists, PCD franchise partners, and pharmaceutical trade buyers. Prescription drugs must be dispensed strictly under medical supervision.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance Section -->
+    <section id="quality" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-600 px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">
+                        <i class="fa-solid fa-certificate"></i>
+                        <span>Zero Compromise Quality</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
+                        Quality Management &amp; Regulatory Compliance
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        At Jeffrey Remedies, precision and quality control define every single product bearing our name. We mandate strict adherence to GMP standards across all our third-party manufacturing facilities.
+                    </p>
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-sm text-slate-700 font-medium">Certified raw API sourcing from audited chemical manufacturers.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-sm text-slate-700 font-medium">Tamper-evident Alu-Alu and blister packaging protecting active ingredients.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="text-sm text-slate-700 font-medium">Comprehensive batch quality testing and chemical assay verification.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
+                            <div class="w-14 h-14 rounded-2xl bg-medicalBlue/10 text-medicalBlue flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-flask-vial"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep mb-2">HPLC &amp; Lab Assay</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">HPLC spectroscopy and microbiology testing guarantee active salt consistency.</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
+                            <div class="w-14 h-14 rounded-2xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-box-archive"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep mb-2">Moisture Protection</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">High-grade Alu-Alu packaging shielding formulations against heat and humidity.</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
+                            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep mb-2">GMP Audits</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Periodic manufacturing facility inspections ensuring complete drug safety standard compliance.</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 card-hover">
+                            <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-shield-heart"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-navyDeep mb-2">Patient Safety</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Zero-defect tolerance ensuring safe, consistent therapeutic outcomes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PCD Franchise & Third-Party Partnership Section -->
+    <section id="franchise" class="py-24 hero-gradient text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(rgb(var(--emerald-500))_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-emerald-500/20 border border-emerald-500/30 px-4 py-1.5 rounded-full text-emerald-400 text-sm font-bold tracking-wide">
+                        <i class="fa-solid fa-handshake"></i>
+                        <span>Partnership Opportunities</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                        PCD Pharma Franchise &amp; Third-Party Manufacturing Services
+                    </h2>
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        Are you looking to start your own pharmaceutical brand or expand distribution? Partner with <strong>Jeffrey Remedies</strong> for contract manufacturing or monopoly-based PCD franchise rights in your territory.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-medicalBlue/20 text-sky-400 flex items-center justify-center font-bold">01</div>
+                                <h4 class="font-bold text-white">Monopoly Rights</h4>
+                            </div>
+                            <p class="text-xs text-slate-400">Exclusive distribution territory rights with zero internal market competition.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">02</div>
+                                <h4 class="font-bold text-white">Promotional Support</h4>
+                            </div>
+                            <p class="text-xs text-slate-400">Visual aids, doctor samples, catch covers, and product literature.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">03</div>
+                                <h4 class="font-bold text-white">Flexible Contract Terms</h4>
+                            </div>
+                            <p class="text-xs text-slate-400">Customized batch sizes and packaging for third-party brand owners.</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl">
+                            <div class="flex items-center space-x-3 mb-2">
+                                <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">04</div>
+                                <h4 class="font-bold text-white">Timely Logistics</h4>
+                            </div>
+                            <p class="text-xs text-slate-400">Rapid stock dispatch and reliable courier transport across all regions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="bg-white text-navyDeep p-8 rounded-3xl shadow-2xl">
+                        <h3 class="text-2xl font-bold mb-2">Request Business Inquiry</h3>
+                        <p class="text-xs text-slate-500 mb-6">Submit your manufacturing or franchise request and our team will contact you shortly.</p>
+                        
+                        <form id="franchise-form" onsubmit="handleFranchiseSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Full Name</label>
+                                <input type="text" id="f-name" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="e.g. Mr. John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Phone Number</label>
+                                <input type="tel" id="f-phone" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="+91 XXXXX XXXXX">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">City &amp; State</label>
+                                <input type="text" id="f-city" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="e.g. Prayagraj, Uttar Pradesh">
+                            </div>
+                            <button type="submit" class="w-full bg-medicalBlue hover:bg-sky-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm mt-2">
+                                Submit Request via WhatsApp
+                            </button>
+                        </form>
+                        <div id="franchise-success" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl text-center text-sm">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-lg mb-1 block"></i>
+                            Thank you! Your inquiry has been submitted.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center space-x-2 bg-sky-50 text-medicalBlue px-4 py-1.5 rounded-full text-sm font-bold tracking-wide mb-4">
+                    <i class="fa-solid fa-headset"></i>
+                    <span>Contact Us</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navyDeep tracking-tight">
+                    Corporate Office &amp; Business Locations
+                </h2>
+                <p class="text-slate-600 mt-4 text-base">
+                    Reach out to our offices in Prayagraj and New Delhi for contract manufacturing quotes, bulk supply, or PCD inquiries.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Info Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-medicalBlue/10 text-medicalBlue flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navyDeep text-base">Registered Office (Prayagraj)</h4>
+                            <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                                Jeffrey Remedies, D-41, Sector D, GTB Nagar, Kareli, Allahabad, Prayagraj, Uttar Pradesh - 211016, India.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navyDeep text-base">Corporate Office (New Delhi)</h4>
+                            <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                                A-4/276, Zaidi Villa, TTI Road, Jamia Nagar, Okhla, New Delhi - 110025, India.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emeraldAccent/10 text-emeraldAccent flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navyDeep text-base">Email &amp; Web</h4>
+                            <p class="text-sm text-slate-600 mt-1">
+                                <a href="mailto:jeffrey.remedies.mkd@gmail.com" class="hover:text-medicalBlue break-all font-semibold">jeffrey.remedies.mkd@gmail.com</a><br>
+                                Website: <span class="font-bold text-navyDeep">jeffreyremedies.com</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center shrink-0 text-xl">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-navyDeep text-base">Phone Helplines</h4>
+                            <p class="text-sm text-slate-600 mt-1">
+                                <a href="tel:+917084917850" class="hover:text-medicalBlue font-bold">+91 7084917850</a><br>
+                                <a href="tel:+919336841671" class="hover:text-medicalBlue font-bold">+91 9336841671</a> (Mon - Sat, 9:00 AM - 6:00 PM)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-slate-50 border border-slate-200 p-8 rounded-3xl shadow-sm">
+                        <h3 class="text-2xl font-bold text-navyDeep mb-2">Send Direct Message</h3>
+                        <p class="text-xs text-slate-500 mb-6">Have queries about third-party manufacturing, formulations, or PCD franchise?</p>
+                        
+                        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Your Name</label>
+                                    <input type="text" id="c-name" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
+                                    <input type="email" id="c-email" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Inquiry Type</label>
+                                <select id="c-subject" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue">
+                                    <option>Third-Party Manufacturing Inquiry</option>
+                                    <option>PCD Franchise Partnership</option>
+                                    <option>Bulk Product Supply / Trading</option>
+                                    <option>General Corporate Inquiry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Message</label>
+                                <textarea id="c-message" rows="4" required class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-medicalBlue" placeholder="Specify required division or dosage forms..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-medicalBlue hover:bg-sky-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm mt-2">
+                                Send Message via WhatsApp
+                            </button>
+                        </form>
+                        <div id="contact-success" class="hidden mt-4 bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-xl text-center text-sm">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-lg mb-1 block"></i>
+                            Message sent successfully!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navyDeep text-white pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="logo.jpg" alt="Jeffrey Remedies logo" class="h-16 w-auto rounded-xl bg-white p-1 shadow-lg">
+                        <span class="text-3xl font-black tracking-tight text-white">JEFFREY REMEDIES</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        <strong class="font-extrabold text-white">Jeffrey Remedies</strong> - Third-Party Manufacturing, Supplier &amp; Trading Company based in Prayagraj &amp; New Delhi. GST: 09AYJPJ5724B1ZJ.
+                    </p>
+                    <div class="flex items-center space-x-4 pt-2">
+                        <a href="#home" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-medicalBlue flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#home" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-medicalBlue flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="fa-brands fa-twitter text-sm"></i></a>
+                        <a href="#home" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-medicalBlue flex items-center justify-center text-slate-300 hover:text-white transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Therapeutic Areas</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li>Dermatology &bull; Orthopedic</li>
+                        <li>Cardiovascular &bull; Urology</li>
+                        <li>Pain Management &bull; GI</li>
+                        <li>Nutritional &bull; Nephrology</li>
+                        <li>Ayurvedic &bull; Ophthalmic</li>
+                        <li>Respiratory &bull; General Med</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Dosage Forms</h4>
+                    <ul class="space-y-2 text-xs text-slate-400">
+                        <li>Tablets &bull; Capsules</li>
+                        <li>Syrups &bull; Dry Syrups</li>
+                        <li>Injections &bull; Eye Drops</li>
+                        <li>Ointments &amp; Sprays</li>
+                        <li>Lotions &bull; Suspensions</li>
+                        <li>Shampoo &amp; Wash</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Corporate Info</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li><i class="fa-solid fa-location-dot text-sky-400 mr-2"></i> Prayagraj, UP - 211016</li>
+                        <li><i class="fa-solid fa-building text-sky-400 mr-2"></i> Jamia Nagar, New Delhi - 110025</li>
+                        <li><i class="fa-solid fa-envelope text-sky-400 mr-2"></i> jeffrey.remedies.mkd@gmail.com</li>
+                        <li><i class="fa-solid fa-phone text-sky-400 mr-2"></i> +91 7084917850</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Jeffrey Remedies. All rights reserved. | GST: 09AYJPJ5724B1ZJ</p>
+                <p class="mt-4 sm:mt-0 text-center sm:text-right">
+                    Official Website: jeffreyremedies.com
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Colour & Design Switcher -->
+    <div id="theme-panel">
+        <div id="theme-box" class="hidden mb-3 w-64 bg-white text-slate-800 border border-slate-200 rounded-2xl shadow-2xl p-4">
+            <p class="text-xs font-bold uppercase text-slate-500 mb-2">Colour Theme</p>
+            <div id="swatches" class="flex flex-wrap gap-2 mb-4"></div>
+            <p class="text-xs font-bold uppercase text-slate-500 mb-2">Design Style</p>
+            <div class="grid grid-cols-3 gap-2 text-xs font-semibold">
+                <button data-style="soft" class="style-btn px-2 py-2 rounded-xl border border-slate-200 hover:bg-slate-100">Soft</button>
+                <button data-style="sharp" class="style-btn px-2 py-2 rounded-xl border border-slate-200 hover:bg-slate-100">Sharp</button>
+                <button data-style="dark" class="style-btn px-2 py-2 rounded-xl border border-slate-200 hover:bg-slate-100">Dark</button>
+            </div>
+        </div>
+        <button id="theme-toggle" aria-label="Change colours and design" class="ml-auto flex w-12 h-12 rounded-full bg-medicalBlue text-white shadow-xl items-center justify-center hover:scale-105 transition-transform">
+            <i class="fa-solid fa-palette text-lg"></i>
+        </button>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Theme switcher UI
+        (function () {
+            const sw = document.getElementById('swatches');
+            let cur = 'ocean', st = 'soft';
+            try { cur = localStorage.getItem('jr-theme') || cur; st = localStorage.getItem('jr-style') || st; } catch (e) {}
+            function mark() {
+                sw.querySelectorAll('.swatch').forEach(b => b.classList.toggle('on', b.dataset.key === cur));
+                document.querySelectorAll('.style-btn').forEach(b => {
+                    const on = b.dataset.style === st;
+                    b.classList.toggle('bg-medicalBlue', on); b.classList.toggle('text-white', on);
+                });
+            }
+            Object.entries(THEMES).forEach(([k, t]) => {
+                const b = document.createElement('button');
+                b.className = 'swatch'; b.dataset.key = k; b.title = t.name;
+                b.style.background = 'linear-gradient(135deg,' + t.p + ' 50%,' + t.a + ' 50%)';
+                b.onclick = () => { cur = k; applyTheme(k); mark(); };
+                sw.appendChild(b);
+            });
+            document.querySelectorAll('.style-btn').forEach(b => b.onclick = () => { st = b.dataset.style; applyStyle(st); mark(); });
+            document.getElementById('theme-toggle').onclick = () => document.getElementById('theme-box').classList.toggle('hidden');
+            mark();
+        })();
+
+        // Product Filtering Function
+        function filterProducts(category, ev) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-medicalBlue', 'text-white', 'active-filter');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+
+            const t = (ev || window.event).currentTarget;
+            t.classList.remove('bg-white', 'text-slate-700');
+            t.classList.add('bg-medicalBlue', 'text-white', 'active-filter');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Franchise Form Submission Handler
+        function handleFranchiseSubmit(event) {
+            event.preventDefault();
+            const msg = encodeURIComponent('Third-Party / PCD Inquiry:\nName: ' + document.getElementById('f-name').value +
+                '\nPhone: ' + document.getElementById('f-phone').value +
+                '\nCity: ' + document.getElementById('f-city').value);
+            document.getElementById('franchise-form').style.display = 'none';
+            document.getElementById('franchise-success').classList.remove('hidden');
+            window.open('https://wa.me/917084917850?text=' + msg, '_blank');
+        }
+
+        // Contact Form Submission Handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const msg = encodeURIComponent('Inquiry Type: ' + document.getElementById('c-subject').value +
+                '\nName: ' + document.getElementById('c-name').value +
+                '\nEmail: ' + document.getElementById('c-email').value +
+                '\nMessage: ' + document.getElementById('c-message').value);
+            document.getElementById('contact-form').style.display = 'none';
+            document.getElementById('contact-success').classList.remove('hidden');
+            window.open('https://wa.me/917084917850?text=' + msg, '_blank');
+        }
+    </script>
+</body>
+</html>
